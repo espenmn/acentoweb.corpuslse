@@ -1,0 +1,89 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="acentoweb.corpuslse"
+      metal:use-macro="context/main_template/macros/master">
+<body>
+  <metal:content-core fill-slot="content-core">
+  <metal:block define-macro="content-core">
+
+      <!--<div tal:replace="view/my_custom_view_method" />-->
+      <!--<div tal:replace="context/my_custom_field" />-->
+      <metal:define define-macro="widget_rendering">    <!-- not sure if this define-macro is needed -->
+
+
+        <div class="group">
+         <h5 class="underline"><a><span>General</span> <i class="fa fa-chevron-down open">↓</i></a></h5>
+         <div class="collapse" tal:define="widgets view/widgets/values">
+            <tal:widgets repeat="widget python:[w for w in widgets]">
+
+                <metal:field-slot define-slot="field">
+                    <metal:field define-macro="field">
+                        <tal:widget
+                            tal:replace="structure widget/@@ploneform-render-widget"/>
+                    </metal:field>
+                </metal:field-slot>
+                <!--</span>-->
+            </tal:widgets>
+        </div>
+        </div>
+
+          <span tal:define="groups view/groups">
+              <tal:groups repeat="group python:[w for w in groups]">
+                <div class="group">
+                 <h5 class="underline"><a><span>${group/label}</span> <i class="fa fa-chevron-down">↓</i></a></h5>
+                 <div class="collapse hidden" tal:define="widgets group/widgets/values">
+                    <tal:widgets repeat="widget python:[w for w in widgets]">
+
+                        <metal:field-slot define-slot="field">
+                            <metal:field define-macro="field">
+                                <tal:widget
+                                    tal:replace="structure widget/@@ploneform-render-widget"/>
+                            </metal:field>
+                        </metal:field-slot>
+                        <!--</span>-->
+                    </tal:widgets>
+                </div>
+              </div>
+              </tal:groups>
+            </span>
+
+
+            <script>
+              $("h5").click(function(){
+                $( this ).closest( "div" ).find(".collapse").toggleClass("hidden");
+                $( this ).parent.find(".fa-chevron-down").toggleClass("open");
+              });
+            </script>
+
+            <style>
+              .collapse { border-bottom: 1px solid silver; margin-bottom: 1rem; padding-bottom: 1.5rem}
+              h5.underline  { border-bottom: 1px solid silver; padding: 1rem 0 0.5rem; display: block; font-size: 170%}
+              h5.underline a {   color: #333; text-decoration: none}
+              h5.underline i { float: right}
+              .no-border { border: 0 none !important}
+              .fa-chevron-down{
+                transform: rotate(0deg);
+                transition: transform 0.2s linear;
+              }
+
+
+              .headertext h4:first-letter { color: #DA291C !important}
+
+              .fa-chevron-down {font-size: 2rem;}
+
+              .fa-chevron-down.open{
+                transform: rotate(180deg);
+                transition: transform 0.2s linear;
+              }
+
+              .group h5 { background: whitesmoke;}
+            </style>
+
+        </metal:define>
+
+  </metal:block>
+  </metal:content-core>
+</body>
+</html>
