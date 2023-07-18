@@ -2,6 +2,7 @@
 
 from plone.app.contenttypes.interfaces import IDocument
 from plone.dexterity.interfaces import IDexterityContent
+from plone.dexterity.interfaces import IDexterityContainer
 from plone.indexer import indexer
 
 
@@ -11,8 +12,8 @@ def dummy(obj):
     raise AttributeError('This field should not indexed here!')
 
 
-@indexer(IDocument)  # ADJUST THIS!
-def tareas_index(obj):
+@indexer(IDexterityContainer)  # ADJUST THIS to custom content type!
+def tareasIndexer(obj):
     """Calculate and return the value for the indexer"""
     indeks = set()
     indeksfields = [
@@ -35,16 +36,12 @@ def tareas_index(obj):
         'diacr_codigo'
     ]
 
-    #def __init__(self, context, catalog):
-    #...         self.context = context
-    #...         self.catalog = catalog
-    #...
-    #...     def __call__(self):
-    #...         return len(self.context.text)
+    for indeksfield in indeksfields:
+        if hasattr(obj, indeksfield):
+            if getattr(obj, indeksfield) != None:  #Maybe check for length ?
+                #indeks.add(getattr(obj, indekfield))
+                indeks.add(indeksfield)
 
-    for indexfield in indeksfields:
-        if getattr(obj, indexfield):
-            indeks.add(getattr(obj, indexfield))
-
+    #import pdb; pdb.set_trace()
     obj.tareas = indeks
     return indeks

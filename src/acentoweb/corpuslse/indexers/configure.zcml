@@ -4,7 +4,7 @@
 
  <!-- -*- extra stuff goes here -*- -->
 
-  <include file="tareas_index.zcml" />
+  <include file="tareas.zcml" />
 
 
 </configure>

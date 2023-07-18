@@ -1,0 +1,9 @@
+<configure xmlns="http://namespaces.zope.org/zope">
+
+  <!--adapter factory=".tareas.dummy"
+    name="tareas" /-->
+
+  <adapter factory=".tareas.tareasIndexer"
+    name="tareas" />
+
+</configure>
