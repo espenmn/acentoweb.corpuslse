@@ -5,3 +5,13 @@
 src/acentoweb.corpuslse.egg-info/
 src/acentoweb.corpuslse.egg-info/*
 *.pyc
+src/acentoweb.corpuslse.egg-info/PKG-INFO
+src/acentoweb.corpuslse.egg-info/SOURCES.txt
+src/acentoweb/__pycache__/__init__.cpython-38.pyc
+src/acentoweb/corpuslse/__pycache__/__init__.cpython-38.pyc
+src/acentoweb/corpuslse/__pycache__/interfaces.cpython-38.pyc
+src/acentoweb/corpuslse/__pycache__/setuphandlers.cpython-38.pyc
+src/acentoweb/corpuslse/browser/__pycache__/__init__.cpython-38.pyc
+src/acentoweb/corpuslse/indexers/__pycache__/__init__.cpython-38.pyc
+src/acentoweb/corpuslse/views/__pycache__/__init__.cpython-38.pyc
+src/acentoweb/corpuslse/views/__pycache__/corpus_view.cpython-38.pyc
