@@ -1,0 +1,10 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    i18n_domain="acentoweb.corpuslse">
+
+ <!-- -*- extra stuff goes here -*- -->
+
+  <include file="tareas_index.zcml" />
+
+
+</configure>
