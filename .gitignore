@@ -1,0 +1,7 @@
+
+*.pyc
+
+*DS_Store
+src/acentoweb.corpuslse.egg-info/
+src/acentoweb.corpuslse.egg-info/*
+*.pyc
