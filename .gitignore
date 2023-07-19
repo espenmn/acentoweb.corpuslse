@@ -16,3 +16,4 @@ src/acentoweb/corpuslse/indexers/__pycache__/__init__.cpython-38.pyc
 src/acentoweb/corpuslse/views/__pycache__/__init__.cpython-38.pyc
 src/acentoweb/corpuslse/views/__pycache__/corpus_view.cpython-38.pyc
 src/acentoweb/corpuslse/__pycache__*
+*.pyc

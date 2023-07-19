@@ -14,12 +14,14 @@
 
 
         <div class="group">
-         <h5 class="underline"><a><span>General</span> <i class="fa fa-chevron-down open">↓</i></a></h5>
+         <h5 class="underline"><a><span>General</span> <i class="open icon-down"/></a></h5>
          <div class="collapse" tal:define="widgets view/widgets/values">
             <tal:widgets repeat="widget python:[w for w in widgets]">
 
                 <metal:field-slot define-slot="field">
+
                     <metal:field define-macro="field">
+
                         <tal:widget
                             tal:replace="structure widget/@@ploneform-render-widget"/>
                     </metal:field>
@@ -29,14 +31,16 @@
         </div>
         </div>
 
+        <p>Line 43 in code prevents empty fields to show, add condition if you want that</p>
+
           <span tal:define="groups view/groups">
               <tal:groups repeat="group python:[w for w in groups]">
                 <div class="group">
-                 <h5 class="underline"><a><span>${group/label}</span> <i class="fa fa-chevron-down">↓</i></a></h5>
+                 <h5 class="underline"><a><span>${group/label}</span> <i class="icon-down"/></a></h5>
                  <div class="collapse hidden" tal:define="widgets group/widgets/values">
                     <tal:widgets repeat="widget python:[w for w in widgets]">
-
-                        <metal:field-slot define-slot="field">
+                        <metal:field-slot define-slot="field" >
+                        <!--metal:field-slot define-slot="field" tal:condition="widget/value|None"-->
                             <metal:field define-macro="field">
                                 <tal:widget
                                     tal:replace="structure widget/@@ploneform-render-widget"/>
@@ -53,17 +57,28 @@
             <script>
               $("h5").click(function(){
                 $( this ).closest( "div" ).find(".collapse").toggleClass("hidden");
-                $( this ).parent.find(".fa-chevron-down").toggleClass("open");
+                $( this ).closest( "div" ).find(".icon-down").toggleClass("open");
               });
             </script>
 
             <style>
               .collapse { border-bottom: 1px solid silver; margin-bottom: 1rem; padding-bottom: 1.5rem}
+              div.collapse  .field {
+              	border-left:  4px solid #ccc;
+              	padding-left: 1rem;
+              	margin-left: 5px;
+                xbackground: whitesmoke;
+              }
+              div.collapse  .field.empty {
+              	border-left:  0 none;
+              	opacity: 0.5
+              }
               h5.underline  { border-bottom: 1px solid silver; padding: 1rem 0 0.5rem; display: block; font-size: 170%}
               h5.underline a {   color: #333; text-decoration: none}
               h5.underline i { float: right}
               .no-border { border: 0 none !important}
-              .fa-chevron-down{
+              .fa-chevron-down,
+              .icon-down, icon-up{
                 transform: rotate(0deg);
                 transition: transform 0.2s linear;
               }
@@ -73,12 +88,17 @@
 
               .fa-chevron-down {font-size: 2rem;}
 
-              .fa-chevron-down.open{
+              .fa-chevron-down.open,
+              .icon-down.open, .icon-up.open
+              {
                 transform: rotate(180deg);
                 transition: transform 0.2s linear;
               }
 
               .group h5 { background: whitesmoke;}
+
+              d
+
             </style>
 
         </metal:define>
