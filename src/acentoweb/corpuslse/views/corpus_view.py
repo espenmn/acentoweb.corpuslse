@@ -31,17 +31,3 @@ class CorpusView(DefaultView):
 
     def update(self):
         super(CorpusView, self).update()
-
-
-
-    #def __call__(self):
-    #    # Implement your own actions:
-    #    return self.index()
-
-    #def get_groups(self):
-    #    import pdb; pdb.set_trace()
-    #    fieldsets = self.context.view().fieldsets
-    #    self.context.fieldsets
-    #    #for group in self.groups:
-    #    #    abc = 1
-    #    return 'ost'
