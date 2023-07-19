@@ -71,7 +71,11 @@
               }
               div.collapse  .field.empty {
               	border-left:  0 none;
-              	opacity: 0.5
+              	opacity: 0.75;
+                margin-bottom: 0;
+              }
+              div.collapse  .field.empty label {
+                font-weight: 400;
               }
               h5.underline  { border-bottom: 1px solid silver; padding: 1rem 0 0.5rem; display: block; font-size: 170%}
               h5.underline a {   color: #333; text-decoration: none}
