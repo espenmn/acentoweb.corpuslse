@@ -32,6 +32,9 @@
         </div>
 
         <p>Line 43 in code prevents empty fields to show, add condition if you want that</p>
+        <div tal:repeat="tarea context/tareas|None">
+          ${tarea}
+        </div>
 
           <span tal:define="groups view/groups">
               <tal:groups repeat="group python:[w for w in groups]">
@@ -39,6 +42,7 @@
                  <h5 class="underline"><a><span>${group/label}</span> <i class="icon-down"/></a></h5>
                  <div class="collapse hidden" tal:define="widgets group/widgets/values">
                     <tal:widgets repeat="widget python:[w for w in widgets]">
+
                         <metal:field-slot define-slot="field" >
                         <!--metal:field-slot define-slot="field" tal:condition="widget/value|None"-->
                             <metal:field define-macro="field">
