@@ -1,4 +1,10 @@
 <?xml version="1.0"?>
 <object name="portal_catalog">
-  <!--<column value="my_meta_column"/>-->
+ <index name="priority" meta_type="KeywordIndex">
+  <indexed_attr value="tareas"/>
+ </index>
+
+
+ <column value="tareas"/>
+
 </object>
